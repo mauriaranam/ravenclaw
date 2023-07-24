@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from models import db, Docente
+from models import db, Docente, Cv
+from datetime import datetime
 
 
 
@@ -31,9 +32,11 @@ def register():
         db.session.commit()
         global current_user
         current_user = usuario.id 
-        return redirect(url_for('home'))
+        return redirect(url_for('cv'))
     return render_template('register.html')
 
+
+#ruta para login
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -51,6 +54,22 @@ def login():
             return redirect(url_for('login'))  
     return render_template('login.html')
 
+#ruta para crear CV
+@app.route("/cv", methods=['POST','GET'])
+def cv():
+    if request.method == 'POST':
+        nombre = request.form ['nombre']
+        apellido = request.form ['apellido']
+        materia = request.form ['materia']
+        fecha_str = request.form["fecha"]
+        fecha = datetime.strptime(fecha_str, "%Y-%m-%d").date()        
+        telefono = request.form ['telefono']
+        nivel = request.form ['nivel']
+        docente_db = Cv(nombre=nombre, apellido=apellido, materia=materia, fecha_nac=fecha,telefono=telefono,nivel=nivel, docente_id=current_user)
+        db.session.add(docente_db)
+        db.session.commit()
+        return redirect (url_for('home'))
+    return render_template("new_cv.html")
 
 
 if __name__ == "__main__":

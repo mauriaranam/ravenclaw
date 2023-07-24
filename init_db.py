@@ -1,4 +1,4 @@
-from models import db, Docente
+from models import db, Docente, Cv
 from flask import Flask
 
 app = Flask("app")

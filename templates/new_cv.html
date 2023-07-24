@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuevo CV</title>
+</head>
+<body>
+    <form class="mb-6" action="{{ url_for('cv') }}", method="POST">
+        <div class="flex mb-4 gap-2">
+            <input name="nombre" type="text" class="flex-1 rounded p-4" placeholder="Nombres">
+            <input name="apellido" type="text" class="flex-1 rounded p-4" placeholder="Apellidos">
+            <input name="materia" type="text" class="flex-1 rounded p-4" placeholder="Materia">
+            <input name="fecha" type="date" class="flex-1 rounded p-4" placeholder="Fecha de nacimiento">
+            <input name="telefono" type="text" class="flex-1 rounded p-4" placeholder="Numero de telefono">            
+            <input name="nivel" type="text" class="flex-1 rounded p-4" placeholder="Nivel">            
+        </div>
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Termina con tu registro!
+        </button>
+    </form>
+</body>
+</html>

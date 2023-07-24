@@ -6,10 +6,17 @@
     <title>Home</title>
 </head>
 <body>
+    <button>
+        <a href="/register">Registrate</a>
+    </button>
+    <button>
+        <a href="/login">Inicia sesion</a>
+    </button>
     {% for docente in docentes %}
-    <a> {{docente.username}} </a>
-    <a> {{docente.email}} </a>
-    <a>--------------</a>
+    <h5> {{docente.username}} </h5>
+    <h5> {{docente.email}} </h5>
+    <h5> {{docente.nivel}} </h5>
+    <h5>----------</h5>
     {% endfor %}
 
 
